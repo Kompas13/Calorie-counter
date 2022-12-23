@@ -69,8 +69,8 @@ public class StepTracker {
             System.out.println("—татистика шагов по дн€м:");
             monthToData[month].printDaysAndStepsFromMonth();
             System.out.println("ќбщее количество шагов за мес€ц: " + monthToData[month].sumStepsFromMonth());
-            int sumSteps = monthToData[month].maxSteps();// максимальное число шагов за мес€ц
-            System.out.println("ћаксимально пройденное количество шагов за мес€ц: " + sumSteps);
+            int sumSteps = monthToData[month].sumStepsFromMonth();// общее число шагов за мес€ц
+            System.out.println("ћаксимально пройденное количество шагов за мес€ц: " + monthToData[month].maxSteps());
             System.out.println("—реднее количество шагов за мес€ц: " + monthToData[month].monthlyAverageSteps());
             System.out.println("ѕройденна€ за мес€ц дистанци€ (в км): " + conv.convertToKm(sumSteps));
             System.out.println(" оличество сожженных за мес€ц килокалорий: " + conv.convertStepsToKilocalories(sumSteps));
