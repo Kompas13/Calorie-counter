@@ -1,13 +1,14 @@
 import java.util.Scanner;
 
 public class StepTracker {
-    Converter conv = new Converter();
+    Converter converter;
     Scanner scanner;
     MonthData[] monthToData;
     private int goalByStepsPerDay = 10000;
 
     StepTracker(Scanner scan) {
-        scanner = scan;
+        this.scanner = scan;
+        this.converter = new Converter();
         monthToData = new MonthData[12];
         for (int i = 0; i < 12; i++) {
             monthToData[i] = new MonthData();
@@ -68,14 +69,14 @@ public class StepTracker {
             System.out.println("¬ывод статистики ¬аших достижений за " + monthName[month] + " мес€ц:");
             System.out.println("—татистика шагов по дн€м:");
             monthToData[month].printDaysAndStepsFromMonth();
-            System.out.println("ќбщее количество шагов за мес€ц: " + monthToData[month].sumStepsFromMonth());
             int sumSteps = monthToData[month].sumStepsFromMonth();// общее число шагов за мес€ц
-            System.out.println("ћаксимально пройденное количество шагов за мес€ц: " + monthToData[month].maxSteps());
-            System.out.println("—реднее количество шагов за мес€ц: " + monthToData[month].monthlyAverageSteps());
-            System.out.println("ѕройденна€ за мес€ц дистанци€ (в км): " + conv.convertToKm(sumSteps));
-            System.out.println(" оличество сожженных за мес€ц килокалорий: " + conv.convertStepsToKilocalories(sumSteps));
+            System.out.println("ќбщее количество шагов за мес€ц: " + sumSteps);
+            System.out.println("ћаксимально пройденное количество шагов за мес€ц: " + monthToData[month].searchMaxStepsFromMonth());
+            System.out.println("—реднее количество шагов за мес€ц: " + monthToData[month].countMonthlyAverageSteps());
+            System.out.println("ѕройденна€ за мес€ц дистанци€ (в км): " + converter.convertStepsToKm(sumSteps));
+            System.out.println(" оличество сожженных за мес€ц килокалорий: " + converter.convertStepsToKilocalories(sumSteps));
             System.out.println("Ћучша€ сери€ за мес€ц (максимальное количество подр€д идущих дней, " +
-                    "в течение которых количество шагов за день было равно или выше целевого): " + monthToData[month].bestSeries(goalByStepsPerDay));
+                    "в течение которых количество шагов за день было равно или выше целевого): " + monthToData[month].findBestSeries(goalByStepsPerDay));
             System.out.println();
         }
     }

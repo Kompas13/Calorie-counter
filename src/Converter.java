@@ -1,7 +1,7 @@
 public class Converter {
 
     //Конвертер шагов в километры:
-    public int convertToKm(int steps) {
+    public int convertStepsToKm(int steps) {
         return (steps * 75) / 100000;
     }
 

@@ -18,7 +18,7 @@ public class MonthData {
     }
 
     //Максимальное количество шагов в месяц:
-    int maxSteps() {
+    int searchMaxStepsFromMonth() {  //названия методов поменял, но такие названия были даны в ТЗ.
         int maxSteps = 0;
         for (int day : days) {
             if (maxSteps < day) {
@@ -28,13 +28,13 @@ public class MonthData {
         return maxSteps;
     }
 
-    //Среднее количество шагов (в шаге 9 ТЗ указанного метода нет, но в шаге 11 ТЗ требуется вывод указанной иформации):
-    int monthlyAverageSteps(){
+    //Среднее количество шагов (в шаге 9 ТЗ указанного метода нет, но в шаге 11 ТЗ требуется вывод указанной информации):
+    int countMonthlyAverageSteps(){
         return sumStepsFromMonth()/30;
     }
 
     // Поиск лучшей серии:
-    int bestSeries(int goalByStepsPerDay) {
+    int findBestSeries(int goalByStepsPerDay) {
         int bestSession = 0;
         int countBest = 0;
         for (int day : days) {
